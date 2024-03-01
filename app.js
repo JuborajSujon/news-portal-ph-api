@@ -11,22 +11,25 @@ const loadCategory = async () => {
     // create a div
     const div = document.createElement("div");
     div.innerHTML = `
-    <button class="btn btn-primary">${item.category_name}</button>
+    <button onclick="loadNews('${item.category_id}')" class="btn btn-primary">${item.category_name}</button>
     `;
     categoryContainer.appendChild(div);
   });
 };
 
-const loadNews = async () => {
+const loadNews = async (catId = `08`) => {
+  console.log(catId);
   const response = await fetch(
-    "https://openapi.programming-hero.com/api/news/category/01"
+    `https://openapi.programming-hero.com/api/news/category/${catId}`
   );
   const data = await response.json();
   // console.log(data.data);
-  data.data.forEach((item) => {
-    console.log(item);
 
-    const newsContainer = document.getElementById("news-container");
+  const newsContainer = document.getElementById("news-container");
+  newsContainer.innerHTML = "";
+  data.data.forEach((item) => {
+    // console.log(item);
+
     const div = document.createElement("div");
     div.classList.add("card-container");
     div.innerHTML = `
