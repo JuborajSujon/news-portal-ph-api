@@ -18,7 +18,8 @@ const loadCategory = async () => {
 };
 
 const loadNews = async (catId = `08`) => {
-  console.log(catId);
+  // console.log(catId);
+  document.getElementById("loading-spiner").style.display = "block";
   const response = await fetch(
     `https://openapi.programming-hero.com/api/news/category/${catId}`
   );
@@ -29,7 +30,7 @@ const loadNews = async (catId = `08`) => {
   newsContainer.innerHTML = "";
   data.data.forEach((item) => {
     // console.log(item);
-
+    document.getElementById("loading-spiner").style.display = "none";
     const div = document.createElement("div");
     div.classList.add("card-container");
     div.innerHTML = `
