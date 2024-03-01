@@ -98,5 +98,24 @@ const loadNews = async (catId = `08`) => {
   });
 };
 
+const handleSearch = () => {
+  const value = document.getElementById("search-box").value;
+
+  if (
+    value === "01" ||
+    value === "02" ||
+    value === "03" ||
+    value === "04" ||
+    value === "05" ||
+    value === "06" ||
+    value === "07" ||
+    value === "08"
+  ) {
+    loadNews(value);
+  } else {
+    alert("Please write corect catID : 01, 02, 03, 04, 05, 06, 07, 08");
+  }
+};
+
 loadNews();
 loadCategory();
